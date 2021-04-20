@@ -1,0 +1,15 @@
+@import "mixins";
+@import "fonts";
+@import "vendor";
+@import "vars";
+@import "settings";
+
+/* buttons */
+.btn {
+  border-radius: 40px;
+  padding: 24px 95px 24px 52px;
+  box-shadow: 0 10px 36px rgba(47, 230, 255, 0.2);
+  background: linear-gradient(92.57deg, #2f8fff 0%, #2f73f6 100%);
+}
+
+/* end buttons */
