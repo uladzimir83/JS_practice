@@ -5,10 +5,28 @@
 @import "settings";
 
 .header {
-  display: flex;
-  justify-content: flex-end;
+  margin-bottom: 40px;
 }
 
+.header__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-bottom: 1px solid #bbb;
+  padding: 15px 0 30px;
+}
+
+.header__inner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  border-bottom: 3px solid #bbb;
+  width: 100%;
+}
+
+// logo
 .logo {
   margin-right: auto;
 }
@@ -20,17 +38,24 @@
 
 .logo__icon {
   display: inline-block;
+  margin-right: 20px;
   width: 50px;
   height: 50px;
-  margin-right: 20px;
 }
 
 .logo__text {
-  font-family: Racing;
+  font-family: "Racing";
   font-size: 20px;
-  color: cornflowerblue;
+  color: #6495ed;
 }
 
+// end logo
+
+// menu
+
+nav {
+  margin-right: 30px;
+}
 
 .menu {
   display: flex;
@@ -38,11 +63,59 @@
 }
 
 .menu__item:not(:last-child) {
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 .menu__link {
-  font-family: Dosis-SemiBold;
-  font-size: 16px;
-  color: darkslategrey;
+  font-family: "Lato_bd";
+  font-size: 18px;
+  color: #636363;
 }
+
+// end menu
+
+// search
+.search {
+  margin-top: -12px;
+}
+
+.search__form {
+  position: relative;
+}
+
+.search__form__input {
+  border: none;
+  border-bottom: 1px solid #949494;
+  padding: 3px 30px 3px 10px;
+  color: #949494;
+}
+
+.search__form__input:focus {
+  outline: none;
+}
+
+.search__form__submit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  width: 20px;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512.005 512.005'%3E%3Cpath d='M508.885 493.784L353.109 338.008c32.341-35.925 52.224-83.285 52.224-135.339C405.333 90.925 314.41.002 202.666.002S0 90.925 0 202.669s90.923 202.667 202.667 202.667c52.053 0 99.413-19.883 135.339-52.245l155.776 155.776a10.645 10.645 0 007.552 3.136c2.731 0 5.461-1.045 7.552-3.115a10.7 10.7 0 00-.001-15.104zM202.667 384.003c-99.989 0-181.333-81.344-181.333-181.333S102.677 21.336 202.667 21.336 384 102.68 384 202.669s-81.344 181.334-181.333 181.334z' fill='%23949494'/%3E%3C/svg%3E") no-repeat;
+  cursor: pointer;
+}
+
+// end search
+
+// content part
+
+// filter
+.filter {
+  border: 1px solid #949494;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+// end filter
+
+// end content part
