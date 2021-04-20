@@ -55,3 +55,8 @@ a {
 .js-focus-visible :focus:not(.focus-visible) {
   outline: none;
 }
+
+svg {
+  width: 100%;
+  height: 100%;
+}

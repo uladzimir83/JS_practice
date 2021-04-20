@@ -4,12 +4,45 @@
 @import "vars";
 @import "settings";
 
-/* buttons */
-.btn {
-  border-radius: 40px;
-  padding: 24px 95px 24px 52px;
-  box-shadow: 0 10px 36px rgba(47, 230, 255, 0.2);
-  background: linear-gradient(92.57deg, #2f8fff 0%, #2f73f6 100%);
+.header {
+  display: flex;
+  justify-content: flex-end;
 }
 
-/* end buttons */
+.logo {
+  margin-right: auto;
+}
+
+.logo__link {
+  display: flex;
+  align-items: center;
+}
+
+.logo__icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+
+.logo__text {
+  font-family: Racing;
+  font-size: 20px;
+  color: cornflowerblue;
+}
+
+
+.menu {
+  display: flex;
+  list-style-type: none;
+}
+
+.menu__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.menu__link {
+  font-family: Dosis-SemiBold;
+  font-size: 16px;
+  color: darkslategrey;
+}
