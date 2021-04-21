@@ -17,8 +17,17 @@ img {
 }
 
 a {
+  padding-bottom: 3px;
   text-decoration: none;
-  color: inherit;
+  color: #636363;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color .3s, color .3s;
+}
+
+a:hover {
+  color: #8b8b8b;
+  text-decoration-color: #8b8b8b;
 }
 
 .site-container {
