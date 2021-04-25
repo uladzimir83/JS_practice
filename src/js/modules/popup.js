@@ -1,15 +1,16 @@
 export let popup = function(options) {
-    function createWindow(options) {
+    function _createWindow(options) {
         let wrapper = document.createElement('div');
 
         wrapper.classList.add('popup__wrapper');
         wrapper.insertAdjacentHTML('afterbegin', `
-        <div class="popup__overlay">
+        <div class="popup__overlay" data-close="true">
             <div class="popup__body">
                 <div class="popup__header">
                     <h3 class="popup__title">${options.title || 'Welcome'}</h3>
+                    <span class="close-popup" data-close="true"></span>
                 </div>
-                <div class="popup__content">
+                <div class="popup__content" data-content>
                     <p class="popup__text">${options.text || 'Здесь могла бы быть ваша реклама'}</p>
                 </div>
                 <div class="popup__footer">
@@ -22,9 +23,19 @@ export let popup = function(options) {
         document.body.prepend(wrapper);
         return wrapper;
     }
-    let popupBody = createWindow({title: 'Заголовок'});
 
-    return {
+    function _createFooter(footer = []) {
+        if (footer.length == 0) {
+            return document.createElement('div');
+        }
+
+        footer.forEach((btn) => {
+
+        });
+    }
+
+    let popupBody = _createWindow({title: 'Заголовок'});
+    let popupObj = {
         open() {
             popupBody.classList.add('open');
         },
@@ -34,6 +45,17 @@ export let popup = function(options) {
             setTimeout(() => {
                 popupBody.classList.remove('hidden');
             }, 200);
+        },
+        addContent(html) {
+            popupBody.querySelector('[data-content]').innerHTML = html;
         }
     }
+
+    popupBody.addEventListener('click', function(e) {
+        if(e.target.dataset.close == 'true') {
+            popupObj.close();
+        }
+    });
+
+    return popupObj;
 }
