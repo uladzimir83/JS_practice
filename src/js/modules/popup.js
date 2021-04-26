@@ -1,7 +1,7 @@
 export let popup = function(options) {
+
     function _createWindow(options) {
         let wrapper = document.createElement('div');
-
         wrapper.classList.add('popup__wrapper');
         wrapper.insertAdjacentHTML('afterbegin', `
         <div class="popup__overlay" data-close="true">
@@ -12,10 +12,6 @@ export let popup = function(options) {
                 </div>
                 <div class="popup__content" data-content>
                     <p class="popup__text">${options.text || 'Здесь могла бы быть ваша реклама'}</p>
-                </div>
-                <div class="popup__footer">
-                    <button class="popup__btn"></button>
-                    <button class="popup__btn"></button>
                 </div>
             </div>
         </div>
@@ -29,12 +25,22 @@ export let popup = function(options) {
             return document.createElement('div');
         }
 
-        footer.forEach((btn) => {
+        let wrap = document.createElement('div');
+        wrap.classList.add('popup__footer');
 
+        footer.forEach((btn) => {
+            let $btn = document.createElement('button');
+            $btn.textContent = btn.text;
+            $btn.classList.add('btn');
+            $btn.onclick = btn.handler;
+            wrap.appendChild($btn);
         });
+        document.querySelector('.popup__overlay').appendChild(wrap);
+        return wrap;
     }
 
     let popupBody = _createWindow({title: 'Заголовок'});
+    let popupFooter = _createFooter(options.footer);
     let popupObj = {
         open() {
             popupBody.classList.add('open');
