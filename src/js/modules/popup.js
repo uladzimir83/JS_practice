@@ -7,7 +7,7 @@ export let popup = function(options) {
         <div class="popup__overlay" data-close="true">
             <div class="popup__body">
                 <div class="popup__header">
-                    <h3 class="popup__title">${options.title || 'Welcome'}</h3>
+                    <h3 class="popup__title">${options.title}</h3>
                     <span class="close-popup" data-close="true"></span>
                 </div>
                 <div class="popup__content" data-content>
@@ -21,9 +21,9 @@ export let popup = function(options) {
     }
 
     function _createFooter(footer = []) {
-        if (footer.length == 0) {
-            return document.createElement('div');
-        }
+        if (footer.length > 0) {
+            let footerWrap = document.createElement('div');
+        footerWrap.classList.add('popup__footer');
 
         let wrap = document.createElement('div');
         wrap.classList.add('popup__footer');

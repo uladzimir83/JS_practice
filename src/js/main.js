@@ -4,23 +4,32 @@ import '../index.html';
 
 import {popup} from './modules/popup'
 
-let popupData = {
-    title: 'Hello world',
-    text: 'lorem lorem lorem',
-    footer: [
-        {text: 'Ok',
-         function() {
-            popupObj.close();
-         }
+
+var popupData = {
+    title: 'Modal window - welcome',
+    text: 'You are Welcom on our modal window',
+    popupFooter: [ 
+        {
+         btnText: 'Ok',
+         btnClass: 'btn',
+         btnType: 'primery',
+         btnHandler() {
+            pop.close()
+         },
         },
-        {text: 'Cancel',
-         function() {
-            popupObj.close();
-         }
+        {
+         btnText: 'Cancel',
+         btnClass: 'btn',
+         btnType: 'primery',
+         btnHandler() {
+            pop.close();
+         },
         }
-    ]
+    ],
 }
 
-window.mod = popup(popupData);
+var pop = popup(popupData);
 
-
+btn.addEventListener('click', function(e) {
+    pop.open();
+});
