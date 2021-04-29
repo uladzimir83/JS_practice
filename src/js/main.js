@@ -3,6 +3,16 @@ import '../scss/main.scss';
 import '../index.html';
 
 import {popup} from './modules/popup'
+import {initCards} from './modules/cards'
+
+initCards({
+    title: 'Reno',
+    type: 'Hatchback',
+    power: 120,
+    volume: 2.2,
+    transmission: 'M',
+    speed: 200,
+});
 
 
 var popupData = {
