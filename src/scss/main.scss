@@ -160,7 +160,7 @@ nav::after {
 }
 
 .cards__title {
-  margin-top: 0;
+  margin-bottom: 15px;
   color: #5a5a5a;
 }
 
@@ -175,6 +175,7 @@ nav::after {
   position: relative;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
   font-family: "Lato_bd";
   font-size: 14px;
   background-color: #fff;
