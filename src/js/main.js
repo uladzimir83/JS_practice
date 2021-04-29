@@ -4,6 +4,9 @@ import '../index.html';
 
 import {popup} from './modules/popup'
 import {initCards} from './modules/cards'
+import {initFilter} from './modules/filter'
+
+initFilter();
 
 initCards({
     title: 'Reno',
@@ -13,7 +16,6 @@ initCards({
     transmission: 'M',
     speed: 200,
 });
-
 
 var popupData = {
     title: 'Modal window - welcome',
