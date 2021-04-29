@@ -32,4 +32,5 @@ var pop = popup(popupData);
 
 btn.addEventListener('click', function(e) {
     pop.open();
+    pop.addContent('добавление контента');
 });
