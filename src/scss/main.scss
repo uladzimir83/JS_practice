@@ -141,17 +141,17 @@ nav::after {
   overflow: hidden;
   margin: 0 15px 30px;
   border-radius: 10px;
-  width: calc((100% - 90px) / 3);
+  width: calc((100% - 120px) / 4);
   box-shadow: 0 4px 16px rgba(0, 0, 0, .3);
 }
 
 .cards__picture {
   overflow: hidden;
-  max-height: 215px;
+  max-height: 155px;
 }
 
 .cards__picture__img {
-  min-height: 220px;
+  min-height: 155px;
 }
 
 .cards__info {
@@ -175,15 +175,19 @@ nav::after {
   display: flex;
   justify-content: space-between;
   font-family: "Lato_bd";
+  font-size: 14px;
   background-color: #fff;
 }
 
 .cards__info__text::before {
-  content: ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .";
+  content: ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .";
   position: absolute;
   left: 0;
-  bottom: -3px;
+  bottom: -2px;
   width: 100%;
+  font-family: "Lato_rg";
+  font-size: 12px;
+  letter-spacing: 0.1px;
 }
 
 .cards__info__data {
@@ -196,18 +200,18 @@ nav::after {
 }
 
 .cards__price {
-  margin: 30px 0;
+  margin: 20px 0;
   text-align: center;
 }
 
 .cards__price__value {
   font-family: "Lato_bd";
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .cards__price__symb {
   font-family: "Lato_rg";
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .cards__more {
@@ -218,6 +222,9 @@ nav::after {
   border-radius: 7px;
   padding: 10px 18px;
   text-decoration-color: transparent;
+  font-family: "Lato_rg";
+  font-size: 16px;
+  line-height: 1.375;
   color: #fff;
   background-color: #6aba88;
 }
