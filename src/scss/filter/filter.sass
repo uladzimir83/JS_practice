@@ -1,39 +1,44 @@
 .filter__wrap
     position: relative
     display: flex
-    margin-bottom: 20px
+    margin: 0 -10px 20px -10px
     padding: 20px 0
     border-bottom: 1px solid #ccc
     border-top: 1px solid #ccc
 
-.filter__name
-    display: flex
-    justify-content: space-between
+.select__title
+    margin-bottom: 15px
+    font-family: "Lato_bd", sans-serif
+    font-size: 16px
+
+.select__body__wrap
+    width: calc((100% - 120px) / 6)
+    margin: 0 10px 20px
 
 .select__body
     position: relative
     user-select: none
-    width: 100%
-    min-width: 200px
     display: flex
     flex-direction: column
-    margin-right: 20px
 
 .select__screen
     position: relative
+    overflow: hidden
     padding: 5px 25px 5px 5px
     border: 1px solid #454545
     border-radius: 3px
     font-family: "Lato_rg", sans-serif
     font-size: 14px
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
 .select__body.is-open .select__screen
     border-radius: 3px 3px 0 0
 
 .select__clear
     position: absolute
-    right: 8px
-    top: 8px
+    right: 7px
+    top: 7px
     width: 12px
     height: 12px
     background: url("data:image/svg+xml,%3Csvg viewBox='0 0 329.269 329' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M194.8 164.77L323.013 36.555c8.343-8.34 8.343-21.825 0-30.164-8.34-8.34-21.825-8.34-30.164 0L164.633 134.605 36.422 6.391c-8.344-8.34-21.824-8.34-30.164 0-8.344 8.34-8.344 21.824 0 30.164l128.21 128.215L6.259 292.984c-8.344 8.34-8.344 21.825 0 30.164a21.266 21.266 0 0015.082 6.25c5.46 0 10.922-2.09 15.082-6.25l128.21-128.214 128.216 128.214a21.273 21.273 0 0015.082 6.25c5.46 0 10.922-2.09 15.082-6.25 8.343-8.34 8.343-21.824 0-30.164zm0 0' fill='firebrick'/%3E%3C/svg%3E%0A") no-repeat;
@@ -50,7 +55,6 @@
     visibility: hidden
     height: 103px
     margin-top: -1px
-    padding: 5px 10px
     border: 1px solid #454545
     border-radius: 0 0 3px 3px
     background: #fff
@@ -62,9 +66,15 @@
 
 .select__option
     position: relative
+    padding: 0 10px
     font-family: "Lato_rg", sans-serif
     font-size: 14px
     line-height: 1.7
+    transition: background-color .3s, color .3s
+
+.select__option:hover
+    background-color: #ccc
+    color: #fff
 
 .select__option.selected::after
     display: block
@@ -76,6 +86,7 @@
     content: ''
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 229.153 229.153'%3E%3Cpath d='M92.356 223.549c7.41 7.5 23.914 5.014 25.691-6.779 11.056-73.217 66.378-134.985 108.243-193.189C237.898 7.452 211.207-7.87 199.75 8.067 161.493 61.249 113.274 117.21 94.41 181.744c-21.557-22.031-43.201-43.853-67.379-63.212-15.312-12.265-37.215 9.343-21.738 21.737 31.501 25.232 58.724 54.655 87.063 83.28z' fill='firebrick'/%3E%3C/svg%3E ") no-repeat
 
+
 .select__options::-webkit-scrollbar-track
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
 	background-color: #F5F5F5
@@ -85,7 +96,7 @@
 	background-color: #F5F5F5
 
 .select__options::-webkit-scrollbar-thumb
-	background-color: #999
+	background-color: #888
 
 .select__options
   overflow-y: scroll

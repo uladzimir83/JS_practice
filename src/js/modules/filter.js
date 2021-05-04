@@ -10,9 +10,8 @@ export let initFilter = function() {
 
     // click on option item
     for (let opt of document.querySelectorAll('.select__option')) {
-        let parentOpt = opt.closest('.select__body');
         opt.addEventListener('click', function(e) {
-            parentOpt.classList.contains('is-multiple') ? addMultiSelect(this) : addSingleSelect(this);  
+            opt.closest('.select__body').classList.contains('is-multiple') ? addMultiSelect(this) : addSingleSelect(this);  
         });
     }
 
@@ -29,10 +28,13 @@ export let initFilter = function() {
         if (type in optionSelected == false) {
                 optionSelected[type] = [];
                 optionSelected[type].push(text);
+                ths.classList.add('selected');
         } else if (type in optionSelected == true && optionSelected[type].indexOf(text, 0) < 0) {
             optionSelected[type].push(text);
+            ths.classList.add('selected');
         } else if (type in optionSelected == true && optionSelected[type].indexOf(text, 0) >= 0) {
             optionSelected[type].splice(optionSelected[type].indexOf(text, 0), 1);
+            ths.classList.remove('selected');
         }
 
         screen.innerHTML = optionSelected[type].join(', ');
@@ -51,6 +53,12 @@ export let initFilter = function() {
             type = parent.dataset.type,
             screen = parent.querySelector('.select__screen');
 
+        if (!ths.classList.contains('selected')) {
+            for (let option of parent.querySelectorAll('.select__option.selected')) {
+                option.classList.remove('selected');
+            }
+            ths.classList.add('selected');
+        };
         screen.innerHTML = ths.textContent;
         optionSelected[type] = ths.textContent;
         addClearBtn(ths);
@@ -76,12 +84,17 @@ export let initFilter = function() {
     }
 
     document.addEventListener('click', (e) => {
-        if (e.target.parentNode.dataset.screen) {
-            let attr = e.target.closest('.select__body').dataset.type;
-            delete optionSelected[attr];
-            e.target.parentNode.innerHTML = 'Choose';
+        let data = e.target.parentNode.dataset.screen;
+        if (data) {
+            let parent = e.target.closest('.select__body');
+            for (let option of parent.querySelectorAll('.select__option.selected')) {
+                option.classList.remove('selected');
+            }
+            delete optionSelected[parent.dataset.type];
+            e.target.parentNode.innerHTML = data;
             e.target.remove();
         }
+        console.log(optionSelected);
     });
 
      // close select body after click out of the body
