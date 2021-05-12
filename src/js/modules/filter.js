@@ -8,6 +8,16 @@ export let initFilter = function() {
         }
     });
 
+    // close all opened list besides the one that was clicked
+    function closeBody(ths) {
+        for (let body of document.querySelectorAll('.select__body')) {
+            body.classList.remove('is-open');
+            if(ths) {
+                ths.closest('.select__body').classList.add('is-open');
+            }
+        }
+    }
+
     // click on option item
     for (let opt of document.querySelectorAll('.select__option')) {
         opt.addEventListener('click', function(e) {
@@ -15,9 +25,27 @@ export let initFilter = function() {
         });
     }
 
-    // add selected data to object
+    // add clear button after first click on option item
+    function addClearBtn(ths) {
+        let isBtn = ths.closest('.select__body').querySelector('.select__screen'),
+            btnClear = document.createElement('span');
+
+        btnClear.classList.add('select__clear');
+
+        isBtn.querySelector('.select__clear') ? null : isBtn.append(btnClear);
+    }
+
+    // close select body after click out of the body
+    window.addEventListener('click', function(e) {
+        if (!e.target.closest('.select__body')) {
+        closeBody();
+        }
+    });
+
+    // object for selected options
     var optionSelected = {};
 
+    // multi select list
     function addMultiSelect(ths) {
         let parent = ths.closest('.select__body'),
             type = parent.dataset.type,
@@ -48,6 +76,7 @@ export let initFilter = function() {
         }
     }
 
+    // single select list
     function addSingleSelect(ths) {
         let parent = ths.closest('.select__body'),
             type = parent.dataset.type,
@@ -65,24 +94,7 @@ export let initFilter = function() {
         closeBody(null);
     }
 
-    function closeBody(ths) {
-        for (let body of document.querySelectorAll('.select__body')) {
-            body.classList.remove('is-open');
-            if(ths) {
-                ths.closest('.select__body').classList.add('is-open');
-            }
-        }
-    }
-
-    function addClearBtn(ths) {
-        let isBtn = ths.closest('.select__body').querySelector('.select__screen'),
-            btnClear = document.createElement('span');
-
-        btnClear.classList.add('select__clear');
-
-        isBtn.querySelector('.select__clear') ? null : isBtn.append(btnClear);
-    }
-
+    // click on 'clear cross' button --> clear selected option --> clear this option from object --> add initial text to screen --> remove clear button
     document.addEventListener('click', (e) => {
         let data = e.target.parentNode.dataset.screen;
         if (data) {
@@ -94,13 +106,17 @@ export let initFilter = function() {
             e.target.parentNode.innerHTML = data;
             e.target.remove();
         }
-        console.log(optionSelected);
     });
 
-     // close select body after click out of the body
-    window.addEventListener('click', function(e) {
-        if (!e.target.closest('.select__body')) {
-        closeBody();
+    // clear all filter
+    document.querySelector('.clear-filter').addEventListener('click', function(e) {
+        for (let body of document.querySelectorAll('.select__body')) {
+            for (let option of body.querySelectorAll('.select__option.selected')) {
+                option.classList.remove('selected');
+            };
+        }
+        for (let clear of document.querySelectorAll('.select__clear')) {
+            clear.remove();
         }
     });
 }
